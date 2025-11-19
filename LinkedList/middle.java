@@ -64,6 +64,50 @@ public class middle {
         }
         System.out.println("null");
     }
+
+    public int removeFirst(){
+        if(size == 0){
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+
+        }
+        else if(size == 1){
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+
+            return val;
+
+        }
+        int val = head.data;
+        head = head.next;
+        size--;
+        return val;
+    }
+
+    public int removeLast() {
+
+        if(size == 0){
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+        }else if (size == 1){
+            int val = head.data;
+            head = tail = null;
+            size = 0;
+            return val;
+        }
+
+        Node prev = head;
+        for(int i=0; i<size-2; i++){
+            prev = prev.next;
+        }
+
+        int val = prev.next.data;
+        prev.next = null;
+        tail = prev;
+        size--;
+        return val;
+    }
     public static void main(String[] args) {
         middle ll = new middle();
         ll.add(1);
@@ -72,6 +116,8 @@ public class middle {
         ll.add(4);
 
         ll.middleAdd(2, 5);
+        ll.removeFirst(); 
+        ll.removeLast(); 
         ll.print();
         System.out.println(ll.size);
 
